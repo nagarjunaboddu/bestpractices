@@ -10,6 +10,7 @@ import javax.transaction.Transactional;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -21,6 +22,8 @@ public class PingControllerIT {
 
     @Test
     void ping_TestResponse() throws Exception {
-        mockMvc.perform(get("/ping")).andExpect(status().isOk());
+        mockMvc.perform(get("/ping"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$").value("Application Available"));
     }
 }
