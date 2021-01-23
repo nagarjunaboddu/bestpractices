@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class PingController {
 
     @GetMapping("/ping")
-
     @ResponseStatus(HttpStatus.OK)
     public String ping(){
         return "Application Available";
